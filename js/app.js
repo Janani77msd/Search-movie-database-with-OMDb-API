@@ -58,9 +58,9 @@ $(document).ready(function(){
 
          // Build html to be appended
          html += "<li>";
-         html += "<div class='poster-wrap'>";
+         html += "<div class='poster-wrap'><a href='http://www.imdb.com/title/" + movie.imdbID + "' target='_blank'>";
          html += poster;
-         html += "</div>";
+         html += "</a></div>";
          html += "<span class='movie-title'>" + movie.Title + "</span>";
          html += "<span class='movie-year'>" + movie.Year + "</span>";
          html += "</li>";
