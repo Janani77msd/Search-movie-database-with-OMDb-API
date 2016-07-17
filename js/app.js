@@ -1,4 +1,7 @@
-// use strict
+
+// I used a self-executing function because JSHint said to use the function form of use strict, but I'm not sure it's needed.
+(function(){
+"use strict";
 
 $(document).ready(function(){
 
@@ -33,9 +36,10 @@ $(document).ready(function(){
     };
 
     // Make ajax call
-    $.getJSON(url, data, displayResults);
+    $.getJSON(url, data, displayResults).fail(ajaxFail);
 
   }); // ends on click
+
 
 
   // This function will insert search results into the html
@@ -48,10 +52,10 @@ $(document).ready(function(){
     // Else, cycle through response data
     } else {
        $.each(response.Search, function(index, movie){
-
+         var poster;
          // If there's no poster available, use placeholder
          if (movie.Poster == "N/A"){
-           var poster = "<i class='material-icons poster-placeholder'>crop_original</i>"
+           poster = "<i class='material-icons poster-placeholder'>crop_original</i>";
          } else {
            poster = "<img class='movie-poster' src=" + movie.Poster + ">";
          }
@@ -77,6 +81,7 @@ $(document).ready(function(){
   } // ends displayResults
 
 
+
   /* The API has already paginated the results into groups of 10.
      So, I fixed the CSS to display two rows of five across, because that's tidier
      Next, I will create function paginate(), which will calculate number of page links needed, and create them
@@ -96,8 +101,10 @@ $(document).ready(function(){
         $("#paginationlist").append(newPageNumber);
 
       }
+
    updateAjaxCall();
    } // ends paginate
+
 
 
 /* This function will load a new page of search results when a page number is clicked on.
@@ -125,8 +132,23 @@ $(document).ready(function(){
            page: ajaxpagenumber
         };
         // Make new ajax call
-        $.getJSON(url, data, displayResults);
+        $.getJSON(url, data, displayResults).fail(ajaxFail);
+
       }); // ends anchor on click
   } // ends updateAjaxCall
 
+
+
+//Handle ajax errors
+function ajaxFail(jqXHR) {
+
+  var errorhtml = "";
+  errorhtml += "<p>Sorry, there was a " + jqXHR.statusText + " error. Please try again later.</p>";
+
+  $("#movies").append(errorhtml);
+}
+
+
 }); // ends document ready
+
+})(); // ends self-executing function
