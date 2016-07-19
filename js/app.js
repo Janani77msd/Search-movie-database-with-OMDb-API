@@ -8,6 +8,8 @@ $(document).ready(function(){
   // Initialize global variables
   var totalListings;
   var ajaxpagenumber;
+  var title;
+  var year;
   var url;
   var data;
 
@@ -23,8 +25,8 @@ $(document).ready(function(){
     $("#pagination").remove();
 
     // Get current search terms
-    var title = $("#search").val();
-    var year = $("#year").val();
+    title = $("#search").val();
+    year = $("#year").val();
     url = "http://www.omdbapi.com/?";
     ajaxpagenumber = 1;
     data = {
@@ -76,7 +78,6 @@ $(document).ready(function(){
 
     // Get totalResults value from API, then call pagination function
     totalListings = response.totalResults;
-    console.log("There are " + totalListings + " total listings: " );
     paginate(totalListings);
   } // ends displayResults
 
@@ -121,8 +122,8 @@ $(document).ready(function(){
 
         // Update query string data
         ajaxpagenumber = parseInt($(this).text());
-        var title = $("#search").val();
-        var year = $("#year").val();
+        title = $("#search").val();
+        year = $("#year").val();
         url = "http://www.omdbapi.com/?";
         data = {
            s: title,
@@ -139,14 +140,14 @@ $(document).ready(function(){
 
 
 
-//Handle ajax errors
-function ajaxFail(jqXHR) {
+  //Handle ajax errors
+  function ajaxFail(jqXHR) {
 
-  var errorhtml = "";
-  errorhtml += "<p>Sorry, there was a " + jqXHR.statusText + " error. Please try again later.</p>";
+    var errorhtml = "";
+    errorhtml += "<p>Sorry, there was a " + jqXHR.statusText + " error.</p>";
 
-  $("#movies").append(errorhtml);
-}
+    $("#movies").append(errorhtml);
+  }
 
 
 }); // ends document ready
