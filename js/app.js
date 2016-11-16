@@ -1,7 +1,5 @@
 
-// I used a self-executing function because JSHint said to use the function form of use strict, but I'm not sure it's needed.
-(function(){
-"use strict";
+'use strict';
 
 $(document).ready(function(){
 
@@ -15,7 +13,7 @@ $(document).ready(function(){
 
 
   // Once user submits search, clear any previous search results
-  // Then make ajax call using current search terms
+  // Then make AJAX call using current search terms
   $("#submit").on("click", function(event){
     event.preventDefault();
 
@@ -109,7 +107,7 @@ $(document).ready(function(){
 
 
 /* This function will load a new page of search results when a page number is clicked on.
-   To do that, it makes a new ajax call, in which the API's "page" property is set to the
+   To do that, it makes a new AJAX call, in which the API's "page" property is set to the
    number of the page that was clicked on.*/
   function updateAjaxCall(){
 
@@ -132,7 +130,7 @@ $(document).ready(function(){
            r: "json",
            page: ajaxpagenumber
         };
-        // Make new ajax call
+        // Make new AJAX call
         $.getJSON(url, data, displayResults).fail(ajaxFail);
 
       }); // ends anchor on click
@@ -140,7 +138,7 @@ $(document).ready(function(){
 
 
 
-  //Handle ajax errors
+  //Handle AJAX errors
   function ajaxFail(jqXHR) {
 
     var errorhtml = "";
@@ -151,5 +149,3 @@ $(document).ready(function(){
 
 
 }); // ends document ready
-
-})(); // ends self-executing function
