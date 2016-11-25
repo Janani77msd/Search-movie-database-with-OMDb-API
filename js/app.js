@@ -25,14 +25,15 @@ $(document).ready(function(){
     // Get current search terms
     title = $("#search").val();
     year = $("#year").val();
-    url = "http://www.omdbapi.com/?";
     ajaxpagenumber = 1;
+    url = "https://www.omdbapi.com/?";
     data = {
        s: title,
        y: year,
        type: "movie",
        r: "json",
-       page: ajaxpagenumber
+       page: ajaxpagenumber,
+       callback: ""
     };
 
     // Make ajax call
