@@ -1,9 +1,9 @@
-##Build a movie search app with the OMDb API and AJAX
+## Build a movie search app with the OMDb API and AJAX
 *Project 5 of Treehouse Full Stack JavaScript course*
 
 You can [view the project here.](https://jprittie.github.io/Search-movie-database-with-OMDb-API/)
 
-###Project objectives:
+### Project objectives:
 Use JavaScript, jQuery and AJAX to load JSON data from a server via a GET HTTP request.
 
 * Given basic HTML/CSS, program the search form to return movie data in JSON format based on the form submission.
